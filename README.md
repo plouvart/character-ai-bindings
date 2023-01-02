@@ -64,11 +64,11 @@ steve = server.create_chatroom(
 # Ask them a question
 print(
 	"Glados response:",
-	glados.ask("Ok")#Wanna do some science stuff together, GLaDOS?"),
+	glados.ask("Wanna do some science stuff together, GLaDOS?"),
 )
 print(
 	"Steve's response:",
-	steve.ask("Ok")#Found any diamonds today, Steve?"),
+	steve.ask("Found any diamonds today, Steve?"),
 )
 
 # Delete the chatrooms
