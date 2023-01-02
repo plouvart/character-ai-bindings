@@ -79,6 +79,11 @@ steve.delete()
 Next is up to you!
 You may even have characters speak with each other if you want to :p
 
+## Limitations
+
+- May fail without much debug info
+- Slow. But that's because character.ai may not be easily accessed with a bot
+
 ## Credits
 
 - character.ai devs
