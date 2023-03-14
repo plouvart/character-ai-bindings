@@ -198,8 +198,7 @@ class ChatRoomServer:
                     EC.presence_of_element_located((By.XPATH, """//*[@id="root"]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]"""))
                 )
             except:
-                raise Exception("The AI seems to be unresponsive!")
-                sys.exit()
+                pass
         if elem is None:
             raise Exception("The AI is unresponsive!")
             sys.exit()
