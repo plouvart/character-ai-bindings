@@ -191,18 +191,23 @@ class ChatRoomServer:
         self.driver.find_element(By.XPATH, """/html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]""").click()
         sleep(0.1)
 
-        try:
-            elem = WebDriverWait(self.driver, 30).until(
-                EC.presence_of_element_located((By.XPATH, """/html/body/div[1]/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div[2]/div/div/div[1]/div[1]/div"""))
-            )
-        except:
+        elem = None
+        for i in range(3):
+            try:
+                elem = WebDriverWait(self.driver, 30).until(
+                    EC.presence_of_element_located((By.XPATH, """//*[@id="root"]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]"""))
+                )
+            except:
+                raise Exception("The AI seems to be unresponsive!")
+                sys.exit()
+        if elem is None:
             raise Exception("The AI is unresponsive!")
             sys.exit()
 
         while self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]").get_attribute("disabled") is not None:
             sleep(0.1)
 
-        return self.driver.find_element(By.XPATH, """/html/body/div[1]/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div[2]/div/div/div[1]/div[1]/div""").text
+        return self.driver.find_element(By.XPATH, """//*[@id="scrollBar"]/div/div/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div[1]/div/p""").text
 
     # TODO, only works correctly when the ai is not currently writing!
     # TODO, must scroll to get all messages
