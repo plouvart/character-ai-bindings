@@ -71,11 +71,11 @@ class ChatRoomServer:
         # Close stupid character.ai popup
         try:
             elem = WebDriverWait(self.driver, 30).until(
-                EC.presence_of_element_located((By.XPATH, "/html/body/div[3]/div/div[1]/div/div/div[3]/button"))
+                EC.presence_of_element_located((By.XPATH, '//*[@id="#AcceptButton"]'))
             )
         except:
             raise Exception("Couldn't close popup")
-        element = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div[1]/div/div/div[3]/button")
+        element = self.driver.find_element(By.XPATH, '//*[@id="#AcceptButton"]')
         element.click()
         sleep(1)
 
