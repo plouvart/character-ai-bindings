@@ -62,8 +62,8 @@ steve.delete()
 class ChatRoomServer:
     def __init__(self, username, password, verbose=False):
         options = uc.ChromeOptions()
-        options.headless=True
-        options.add_argument('--headless')
+        # options.headless=True
+        # options.add_argument('--headless')
         options.add_argument("--disable-popup-blocking");
         self.driver = uc.Chrome(options=options)
         self.driver.get("https://beta.character.ai/")
@@ -203,10 +203,10 @@ class ChatRoomServer:
             raise Exception("The AI is unresponsive!")
             sys.exit()
 
-        while self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]").get_attribute("disabled") is not None:
+        while self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]").get_attribute("title") != "Submit Message":
             sleep(0.1)
 
-        return self.driver.find_element(By.XPATH, """//*[@id="scrollBar"]/div/div/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div[1]/div/p""").text
+        return self.driver.find_element(By.XPATH, """/html/body/div[1]/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div/div""").text
 
     # TODO, only works correctly when the ai is not currently writing!
     # TODO, must scroll to get all messages
