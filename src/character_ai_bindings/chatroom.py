@@ -96,7 +96,7 @@ class ChatRoomServer:
                 EC.presence_of_element_located((By.XPATH, "/html/body/div/main/section/div/div/div/form/div[1]/div/div[1]/div"))
             )
         except:
-            raise Exception("nope open logging page")
+            raise Exception("Couldn't open logging page")
         element = self.driver.find_element(By.XPATH, "/html/body/div/main/section/div/div/div/form/div[1]/div/div[1]/div")
         element.click()
         sleep(1)
@@ -186,11 +186,10 @@ class ChatRoomServer:
         chatroom_name: str,
     ):
         self.switch_chatroom(chatroom_name)
-        sleep(5)
 
         self.driver.find_element(By.XPATH, """//*[@id="user-input"]""").send_keys(question)
         self.driver.find_element(By.XPATH, """/html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]""").click()
-        sleep(1)
+        sleep(0.1)
 
         elem = None
         for i in range(3):
@@ -199,13 +198,13 @@ class ChatRoomServer:
                     EC.presence_of_element_located((By.XPATH, """//*[@id="root"]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]"""))
                 )
             except:
-                print("something happened")
+                pass
         if elem is None:
             raise Exception("The AI is unresponsive!")
-            #sys.exit()
+            sys.exit()
 
         while self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div[3]/div/div/form/div/div/div[2]/button[1]").get_attribute("title") != "Submit Message":
-            sleep(5)
+            sleep(0.1)
 
         return self.driver.find_element(By.XPATH, """/html/body/div[1]/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div[2]/div[2]/div[1]/div[1]/div/div[2]/div/div/div/div[1]/div/div""").text
 
