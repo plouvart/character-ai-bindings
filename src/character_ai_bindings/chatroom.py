@@ -82,22 +82,22 @@ class ChatRoomServer:
         # Open logging popup
         try:
             elem = WebDriverWait(self.driver, 30).until(
-                EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div/div/div/div/div[1]/div[2]/a[4]/button"))
+                EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div[2]/div/div/div/div/div[1]/div[2]/div/div[1]/button"))
             )
         except:
             raise Exception("Could not open logging popup")
-        element = self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div/div/div[1]/div[2]/a[4]/button")
+        element = self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div/div/div[1]/div[2]/div/div[1]/button")
         element.click()
         sleep(1)
 
         # Click logging button
         try:
             elem = WebDriverWait(self.driver, 30).until(
-                EC.presence_of_element_located((By.XPATH, "/html/body/div[3]/div/div[1]/div/div/div/div/div[3]/div/button"))
+                EC.presence_of_element_located((By.XPATH, "/html/body/div/main/section/div/div/div/form/div[1]/div/div[1]/div"))
             )
         except:
-            raise Exception("Could not open logging page")
-        element = self.driver.find_element(By.XPATH, "/html/body/div[3]/div/div[1]/div/div/div/div/div[3]/div/button")
+            raise Exception("Couldn't open logging page")
+        element = self.driver.find_element(By.XPATH, "/html/body/div/main/section/div/div/div/form/div[1]/div/div[1]/div")
         element.click()
         sleep(1)
 
@@ -304,5 +304,4 @@ class ChatRoom:
         Reopening it will still have the messages.
         """
         self.server.delete_chatroom(self.name)
-
 
