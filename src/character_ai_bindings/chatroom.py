@@ -62,8 +62,8 @@ steve.delete()
 class ChatRoomServer:
     def __init__(self, username, password, verbose=False):
         options = uc.ChromeOptions()
-        # options.headless=True
-        # options.add_argument('--headless')
+        options.headless=True
+        options.add_argument('--headless')
         options.add_argument("--disable-popup-blocking");
         self.driver = uc.Chrome(options=options)
         self.driver.get("https://beta.character.ai/")
